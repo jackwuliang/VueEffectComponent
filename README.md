@@ -3,4 +3,4 @@
 
 01 node平台默认自带 npm ===> npm init ===> package.json [需要了解对应的package中包的管理的和分别在什么环境中使用（开发、发布，测试）https://docs.npmjs.com/cli/v8/configuring-npm/package-json]
 
-
+02 添加webpack 在了解package的使用规则之后，其实打包工具有多种，目前比较流行就是webpack,所以需要了解最基础的打包就是；需要了解最基础的js的相互导出导入，工程的模块化思想的由来，基础就是打包入口和打包出口
