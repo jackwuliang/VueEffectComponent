@@ -1,7 +1,7 @@
 
-    const btype = require('./btype')
-    btype()
+    // const btype = require('./btype')
+    // btype()
     
-    console.log('hello bigshabi')
+    console.log(' webpack 打包出来的文件 hello bigshabi')
 
 

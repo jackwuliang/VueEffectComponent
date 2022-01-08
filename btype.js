@@ -1,4 +1,4 @@
 
- export default function btype(){
-    console.log('btype hahahahaah')
+ export default function(){
+    console.log(' 导入导出文件 btype hahahahaah')
  }
