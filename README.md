@@ -8,7 +8,7 @@
     终端执行 webpack 或者 npm run wuliang 就可以生成 打包成功生成 dist/webpackmain.js 
 
     ## npm i
-    ## npm wuliang 
+    ## npm run wuliang 
 
 
     ## npm i 
