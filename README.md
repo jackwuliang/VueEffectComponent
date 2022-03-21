@@ -15,3 +15,9 @@
     ## webpack
 
     双击dist/index.html 打开控制台就会有 console记录 
+
+03 了解对应的打包原理之后我们添加了对应webpack-dev-server中间服务器，在生产的模式下在服务器中启动对应的网页；
+
+    ## npm run dev  
+
+04 由于这一个项目打算使用的是VUE和对应的Typescript来解决；所以添加vue和对应的typescript
