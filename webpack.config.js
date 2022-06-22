@@ -1,28 +1,52 @@
 const path = require('path');
 const url = require('url')
+const { VueLoaderPlugin } = require('vue-loader') 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const publicPath = ''
 
 
 console.log("process", '打包开始，在里面可以获取环境变量，中可以显示')
 
 
-module.exports = (options = {}) => {
+module.exports = ( options = {} ) => {
      console.log('进入webpack，我们可以获取对应环境变量，用于控制对应的开发还是生产模式')
      return {
         mode:'production',
-        entry: './src/index.ts',
+        entry: './src/main.ts',
         output: {
           path: path.resolve(__dirname, 'dist'),
           filename: 'bulid.js', // 防止缓存 options.dev ? '[name].js' : '[name].js?[chunkhash:8]'
           // chunkFilename: '[id].js?[chunkhash]',
           // publicPath: options.dev ? '/assets/' : publicPath, // 生产环境下的
         },
+        module: {
+           rules:[
+              {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+              },
+              {
+                test: /\.(t|j)s$/,
+                exclude: /node_modules/,
+                use: [
+                  {
+                    loader: 'babel-loader',
+                  },
+                ],
+              },
+              
+           ]
+        },
         watch: true, 
+        stats: 'errors-only', 
+        resolve: {
+           extensions: ['.ts', '.tsx', '.js']
+        },
         devServer: {
           // 开发服务器配置
-          host: '127.0.0.1', // 指定使用一个 host。默认是 localhost。如果你希望服务器外部可访问
-          port: 8000, // 指定要监听请求的端口号：
+          host: '127.0.0.1', 
+          port: 8000, 
           proxy: {
             '/api/': {
               target: 'http://localhost:9090', // 接口的域名
@@ -34,26 +58,26 @@ module.exports = (options = {}) => {
               },
             },
           },
-          contentBase: path.resolve(__dirname, ''), //网站的根目录为 根目录/dist，如果没有指定，使用process.cwd()函数取当前工作目录，工作目录>npm run dev
+          contentBase: path.resolve(__dirname, ''), 
           open: true,
-          inline: true, // 注入一段js到文件的最后；然后监视页面改动用于自动刷新。如果为false那麽也就吧js放到ifame中
+          inline: true, 
           hot: false,
-          compress: true, // 压缩文件
-          // historyApiFallback: {
-          //   index: url.parse(options.dev ? '/assets/' : publicPath).pathname,
-          // },
+          compress: true, 
         },
         plugins: [
-          // new HtmlWebpackPlugin({ // 打包编译的模板HTML
-          //   title: 'Hello_world',
-          //   template: 'dist/index.html',
-          //   templateParameters: true,
-          //   minify: {
-          //     removeAttributeQuotes: true, // 压缩代码
-          //     collapseBooleanAttributes: true, // 压缩成一行
-          //   },
-          //   hash: true,
+          // new CleanWebpackPlugin({
           // }),
+          new VueLoaderPlugin (),
+          new HtmlWebpackPlugin({ 
+            title: 'VUETS',
+            template: 'public/index.html',
+            templateParameters: true,
+            minify: {
+              removeAttributeQuotes: true, 
+              collapseBooleanAttributes: true,
+            },
+            hash: true,
+          }),
         ]
      }
 }
