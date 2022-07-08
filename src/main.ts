@@ -1,16 +1,9 @@
-import Vue, { createApp }from 'vue'
+import { createApp }from 'vue'
 import App from './App.vue'
+import router from '@/routers'
 
-const arr = 'typescript232'
 
-console.log(arr,' webpack 打包出来的文件 hello tst111s' + `${new Date}`)
-
-// new Vue({
-//     // router,
-//     // store,
-//     render: (h) => h(App)
-//   }).$mount('#app')
-
+console.log( router,'router')
 
 const app = createApp(App)
 // app.use(router)

@@ -41,7 +41,12 @@ module.exports = ( options = {} ) => {
         watch: true, 
         stats: 'errors-only', 
         resolve: {
-           extensions: ['.ts', '.tsx', '.js']
+           extensions: ['.ts', '.tsx', '.js'],
+           alias: {
+            '@': path.resolve(__dirname, 'src'),
+            '@public': path.resolve(__dirname, 'public'),
+            components: path.resolve(__dirname, 'components'),
+           },
         },
         devServer: {
           // 开发服务器配置

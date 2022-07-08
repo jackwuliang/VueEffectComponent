@@ -1,5 +1,5 @@
 <template>
     <div>
-        <span>app页面</span>        
+        <span>app页面12123</span>        
     </div>
 </template>
