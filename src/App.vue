@@ -1,5 +1,5 @@
 <template>
-    <div>
-        <span>app页面12123</span>        
+    <div >
+       <router-view></router-view>  
     </div>
 </template>

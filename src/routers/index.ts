@@ -1,7 +1,11 @@
+import router from "@/routers/router"
 
+router.beforeEach((to, from, next) => {
+    // console.log(to, from, next)
+    return next();
+})
 
-const demo:string = '23232'
+// router.afterEach(() => {
+// })
 
-const ddd = 213
-
-export default demo
+export default router

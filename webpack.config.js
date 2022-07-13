@@ -8,7 +8,6 @@ const publicPath = ''
 
 console.log("process", '打包开始，在里面可以获取环境变量，中可以显示')
 
-
 module.exports = ( options = {} ) => {
      console.log('进入webpack，我们可以获取对应环境变量，用于控制对应的开发还是生产模式')
      return {
@@ -35,10 +34,28 @@ module.exports = ( options = {} ) => {
                   },
                 ],
               },
-              
+              {
+                test: /\.scss$/,
+                loader: ['style-loader', 'css-loader', 'sass-loader'],
+              },
+              {
+                test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+                use: [
+                  {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 10000,
+                    },
+                  },
+                ],
+              },
            ]
         },
         watch: true, 
+        performance: {
+          maxEntrypointSize: 512000,
+          maxAssetSize: 512000
+        },
         stats: 'errors-only', 
         resolve: {
            extensions: ['.ts', '.tsx', '.js'],
