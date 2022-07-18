@@ -1,23 +1,16 @@
+# Vue 3 + TypeScript + Vite
 
-2021-01-08 初始化工程开源文件；需要了解对应的 git的一般命令 拉取和上传版本的回滚；统一node版本；以及了解node的一些基础的语法和对应位项目的基础文件结构； node -v （> 14）
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-01 node平台默认自带 npm ===> npm init ===> package.json [需要了解对应的package中包的管理的和分别在什么环境中使用（开发、发布，测试）https://docs.npmjs.com/cli/v8/configuring-npm/package-json]
+## Recommended IDE Setup
 
-02 添加webpack 在了解package的使用规则之后，其实打包工具有多种，目前比较流行就是webpack,所以需要了解最基础的打包就是；需要了解最基础的js的相互导出导入，工程的模块化思想的由来，基础就是打包入口和打包出口
-    webpackconfig 中配置默认的出口和入口文件
-    终端执行 webpack 或者 npm run wuliang 就可以生成 打包成功生成 dist/webpackmain.js 
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
-    ## npm i
-    ## npm run wuliang 
+## Type Support For `.vue` Imports in TS
 
+Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
 
-    ## npm i 
-    ## webpack
+1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
+2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
 
-    双击dist/index.html 打开控制台就会有 console记录 
-
-03 了解对应的打包原理之后我们添加了对应webpack-dev-server中间服务器，在生产的模式下在服务器中启动对应的网页；
-
-    ## npm run dev  
-
-04 由于这一个项目打算使用的是VUE和对应的Typescript来解决；所以添加vue和对应的typescript
+You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
