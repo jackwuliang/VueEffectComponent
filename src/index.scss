@@ -1,0 +1,50 @@
+@import './style/main.scss';
+
+:root {
+    overflow: hidden;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0;
+}
+
+// app 样式
+#app {
+    @extend %Basic_page;
+    font-family: $-main-font-family;
+    font-size: 14px;
+    // color: $color-text-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: none;
+    text-decoration: none;
+}
+
+// 有一些专用的特定字体可以在这个位置进行输出；
+// 特殊中文字体
+@font-face {
+    font-family: 'douyu'; //自定义名字
+    src: url('/fonts/douyufont.ttf'); // 下载的字体文件路径
+}
+
+// 英文字体
+@font-face {
+    font-family: 'inter'; //自定义字体
+    font-weight: 400;
+    src: url('/fonts/inter-Regular'); // 下载的字体文件路径
+}
+
+@font-face {
+    font-family: 'inter'; //自定义字体
+    font-weight: 800;
+    src: url('/fonts/inter-Bold'); // 下载的字体文件路径
+}
+
+@font-face {
+    font-family: 'inter'; //自定义字体
+    font-weight: 600;
+    src: url('/fonts/inter-Medium'); // 下载的字体文件路径
+}
+
+

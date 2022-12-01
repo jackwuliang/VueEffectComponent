@@ -1,22 +1,9 @@
-:root {
-  overflow: hidden;
-}
 
-body {
-  margin: 0 !important;
-  padding: 0;
-}
+@import './util.scss//index.scss';
+@import './variable.scss';
 
-// app 样式
-#app {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  background-color: transparent;
-}
+$-primary-color:#1C2E5C;
+$-main-font-family: 'Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif';
 
 p,
 a,

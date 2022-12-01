@@ -1,0 +1,114 @@
+
+
+@import '../../../style/main.scss';
+
+$module-option-height:499px;
+$module-option-width:456px;
+$module-option-min-width:300px;
+
+// color
+$box-border_color:#e6e7e9;
+
+
+.loginPageback{
+    background-color: rgb(241,245,249);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .icon_logo_inner{
+        height: 40px;
+        font-family: 'douyu';
+        font-size: 32px;
+        color: $-primary-color;
+        margin-bottom: 16px;
+    }
+    .loginModelinner{
+        height: $module-option-height;
+        width: $module-option-width;
+        min-width: $module-option-min-width;
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        background-color: white;
+        border: 1px solid $box-border_color;
+        border-radius: 4px;
+        .card-input{
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+                .card-title-inner{
+                     font-size: 20px;
+                     font-weight: 400;
+                     text-align: center;
+                     line-height: 28px;
+                     margin-bottom: 32px;
+                }
+                .mes-title-option{
+                     display: flex;
+                     flex-direction: row;
+                     height: 20px;
+                     margin-bottom: 8px;
+                     p{
+                        font-weight: 800;
+                        font-size: 14px;
+                        float: right;
+                        flex-grow: 1;
+                        text-align: left;
+
+                     }
+                     .forget-password{
+                        color: blue;
+                     }
+                }
+                .mes-input-option{
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 16px;
+                }
+                .basic_configsetting{
+                    display: flex;
+                    flex-direction: row;
+                    margin-top: -8px;
+                }
+                .button_flex{
+                     margin-top: 32px;
+                }
+
+        }
+        .type-login-order{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .hr-text{
+                height: 1px;
+                max-height: 1px;
+                width: 100%;
+                background-color: #e6e7e9;
+                display: flex;
+                align-items: center;
+                &::before {
+                    content: "OR";
+                    display: block;
+                    background-color: white;
+                    width: 40px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    text-align: center;
+                }
+            }
+            .inner-button-change{
+                flex-grow: 1;
+                padding: 40px;
+                display: flex;
+                .button-type{
+                    width: 180px;
+                }
+            }
+        }
+    }
+}
+

@@ -9,12 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "element-plus": "^2.2.25",
     "path": "^0.12.7",
     "vue": "^3.2.37",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",
+    "@types/three": "^0.146.0",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "@vitejs/plugin-vue": "^3.0.0",
