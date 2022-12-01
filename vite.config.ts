@@ -11,7 +11,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // console.log(viteEnv,'env')
 
   return {
-    plugins: [vue()],
+    plugins: [
+      vue()
+    ],
     // global css
 		css: {
 			preprocessorOptions: {

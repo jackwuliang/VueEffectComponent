@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "composite": true,
+    "composite": true,  // 对于引用项目必须设置该属性
     "module": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "lib": ["es2015.promise"],
+    "allowSyntheticDefaultImports": true  // 允许使用 import 导入使用 export = 导出的默认内容 
   },
-  "include": ["vite.config.ts","src/**/*.ts"]
+  "include": [
+    "vite.config.ts", // 针对vite配置选项做专门的配置策略
+  ]
 }

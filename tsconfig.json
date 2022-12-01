@@ -10,12 +10,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "es2015.promise"],
     "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [ "src/*" ],
-     }
+    "baseUrl": "./",
+    "paths":{
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "": ["src/*"],
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "pkg/**/*.ts", "pkg/**/*.d.ts", "pkg/**/*.tsx", "pkg/**/*.vue"],
   "exclude": ["node_modules", "dist", "**/*.js"],
