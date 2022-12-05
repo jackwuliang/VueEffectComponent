@@ -39,19 +39,6 @@ import { Share } from '@element-plus/icons-vue'
 const input = ref('') // 响应式api
 const checked = ref(false) // 响应式api
 
-// const ree = (fun: any): any => {
-// 	let b = 0
-//   console.log(b,'b')
-// 	setTimeout(() => {
-// 		b = fun()
-//     console.log(b,'bbbbb')
-// 	}, 1000)
-// 	return b
-// }
-
-// let c = ree(() => 100)
-// console.log(c, 'ccccc');
-
 const demoref = (getter: any) => {
   let refa = {
     value: 0
@@ -68,8 +55,5 @@ refb = demoref(() => 100)
 console.log('refb', refb)
 
 </script>
-
-
-
 
 <style lang='scss' src='./login.scss' scoped />
