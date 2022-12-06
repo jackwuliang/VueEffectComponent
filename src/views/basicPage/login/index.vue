@@ -7,16 +7,16 @@
         <div class="mes-title-option">
           <p>Email address</p>
         </div>
-        <el-input v-model="input" class="mes-input-option margin-double" placeholder="your email or phone number" />
+        <el-input v-model="loginForm.username"  class="mes-input-option margin-double" placeholder="your email or phone number" />
         <div class="mes-title-option">
           <p>Password</p>
           <div class="forget-password">I forgot password</div>
         </div>
-        <el-input v-model="input" class="mes-input-option" placeholder="your password" />
+        <el-input v-model="loginForm.password" type="password" class="mes-input-option" placeholder="your password" />
         <div class="basic_configsetting">
            <el-checkbox v-model="checked">Remember me on this device</el-checkbox>
         </div>
-        <el-button type="primary" class="button_flex">Sign in</el-button>
+        <el-button type="primary" class="button_flex" @click="login(loginFormRef)">Sign in</el-button>
       </div>
       <div class="type-login-order">
         <div class="hr-text"></div>
@@ -31,28 +31,54 @@
 
 <script setup lang="ts">
 
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
+import { Login } from "@/api/interface";
+import { loginApi } from "@/api/modules/login";
+import type { ElForm } from "element-plus";
 import { Share } from '@element-plus/icons-vue'
+import md5 from "js-md5";
 
-// defineProps<{ msg: string }>()
-
-const input = ref('') // 响应式api
 const checked = ref(false) // 响应式api
+const loading = ref(false);
 
-const demoref = (getter: any) => {
-  let refa = {
-    value: 0
-  }  // 这里ref为值类型
-  console.log('before', refa)
-  setTimeout(() => {
-    refa.value = getter()
-    console.log('after', refa)
-  }, 1000);
-  return refa
+// 定义 formRef（校验规则）
+type FormInstance = InstanceType<typeof ElForm>;
+const loginFormRef = ref<FormInstance>();
+
+const loginForm = reactive<Login.ReqLoginForm>({ username: "", password: "" });
+
+const login = (formEl: FormInstance | undefined) =>{
+  console.log(formEl,'formEl')
+  // 没有内容直接停止
+  try {
+      console.log(121312312)
+      // 1.执行登录接口 这个是不是可以去store中去做
+      const data= loginApi({ ...loginForm, password: md5(loginForm.password) });
+      console.log(data,'data')
+			// const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
+
+    }finally{
+       loading.value = true;
+  }
+  if (!formEl) return;
+  formEl.validate(async valid => {
+    console.log('werer')
+    if (!valid) return;
+    // 打开加载效果
+    loading.value = true;
+    try {
+      console.log(121312312)
+      // 1.执行登录接口 这个是不是可以去store中去做
+      const data= await loginApi({ ...loginForm, password: md5(loginForm.password) });
+      console.log(data,'data')
+			// const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
+
+    }finally{
+       loading.value = true;
+    }
+  })
 }
-let refb
-refb = demoref(() => 100)
-console.log('refb', refb)
+
 
 </script>
 

@@ -24,13 +24,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 		},
     server: {
 			// 服务器主机名，如果允许外部访问，可设置为 "0.0.0.0"
-			host: "0.0.0.0",
+			host: "127.0.0.1",
 			port: viteEnv.VITE_PORT,
 			open: viteEnv.VITE_OPEN,
 			cors: true,
 			// 跨域代理配置
 			proxy: {
-				"/api": {
+				"^/api": {
 					target: "http://localhost:9080", 
 					changeOrigin: true,
 					rewrite: path => path.replace(/^\/api/, "")

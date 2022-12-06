@@ -8,5 +8,4 @@ import App from '@/App.vue'
 import './style/variable.scss'
 import './index.scss'
 
-
 createApp(App).use(router).use(pinia).use(ElementPlus).mount('#app')

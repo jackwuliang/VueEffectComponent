@@ -1,8 +1,9 @@
 // * 请求枚举配置
+
 /**
  * @description：请求配置
  */
- export enum ResultEnum {
+export enum ResultEnum {
 	SUCCESS = 200,
 	ERROR = 500,
 	OVERDUE = 599,
@@ -20,6 +21,7 @@ export enum RequestEnum {
 	PUT = "PUT",
 	DELETE = "DELETE"
 }
+
 
 /**
  * @description：常用的contentTyp类型
