@@ -14,11 +14,13 @@
     "path": "^0.12.7",
     "pinia": "^2.0.27",
     "pinia-plugin-persistedstate": "^3.0.1",
+    "qs": "^6.11.0",
     "vue": "^3.2.37",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",
+    "@types/qs": "^6.9.7",
     "@types/three": "^0.146.0",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",

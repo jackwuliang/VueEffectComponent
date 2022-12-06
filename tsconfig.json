@@ -9,6 +9,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    // "types": [  "vite/client" ],
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM", "es2015.promise"],
     "skipLibCheck": true,
@@ -19,7 +20,7 @@
       "": ["src/*"],
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "pkg/**/*.ts", "pkg/**/*.d.ts", "pkg/**/*.tsx", "pkg/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "pkg/**/*.ts", "pkg/**/*.d.ts", "pkg/**/*.tsx", "pkg/**/*.vue","vite.config.ts"],
   "exclude": ["node_modules", "dist", "**/*.js"],
   // "references": [{ "path": "./tsconfig.node.json" }]
 }

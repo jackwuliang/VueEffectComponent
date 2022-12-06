@@ -6,7 +6,7 @@ import { ResultEnum } from "@/enums/httpEnum";
 import { ElMessage } from "element-plus";
 import { GlobalStore } from "@/stores";
 // import { LOGIN_URL } from "@/config/config";
-const LOGIN_URL = './dashboard'
+const LOGIN_URL = './login'
 import router from "@/routers";
 
 /**
