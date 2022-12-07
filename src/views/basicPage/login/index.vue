@@ -4,19 +4,27 @@
     <div class="loginModelinner">
       <div class="card-input">
         <div class="card-title-inner">Login to your account</div>
-        <div class="mes-title-option">
-          <p>Email address</p>
-        </div>
-        <el-input v-model="loginForm.username"  class="mes-input-option margin-double" placeholder="your email or phone number" />
-        <div class="mes-title-option">
-          <p>Password</p>
-          <div class="forget-password">I forgot password</div>
-        </div>
-        <el-input v-model="loginForm.password" type="password" class="mes-input-option" placeholder="your password" />
-        <div class="basic_configsetting">
-           <el-checkbox v-model="checked">Remember me on this device</el-checkbox>
-        </div>
-        <el-button type="primary" class="button_flex" @click="login(loginFormRef)">Sign in</el-button>
+        <el-form ref="loginFormRef" class="box_item" :model="loginForm" :rules="loginRules">
+          <el-form-item prop="username" class="box_item">
+            <div class="mes-title-option">
+              <p>Email address</p>
+            </div>
+            <el-input v-model="loginForm.username" class="mes-input-option margin-double"
+              placeholder="your email or phone number" />
+          </el-form-item>
+          <el-form-item prop="password" class="box_item">
+            <div class="mes-title-option">
+              <p>Password</p>
+              <div class="forget-password">I forgot password</div>
+            </div>
+            <el-input v-model="loginForm.password" type="password" class="mes-input-option"
+              placeholder="your password" />
+          </el-form-item>
+          <div class="basic_configsetting">
+            <el-checkbox v-model="checked">Remember me on this device</el-checkbox>
+          </div>
+          <el-button type="primary" class="button_flex" @click="login(loginFormRef)">Sign in</el-button>
+        </el-form>
       </div>
       <div class="type-login-order">
         <div class="hr-text"></div>
@@ -34,9 +42,12 @@
 import { ref, reactive } from 'vue'
 import { Login } from "@/api/interface";
 import { loginApi } from "@/api/modules/login";
+import { GlobalStore } from "@/stores";
 import type { ElForm } from "element-plus";
 import { Share } from '@element-plus/icons-vue'
 import md5 from "js-md5";
+
+const globalStore = GlobalStore();
 
 const checked = ref(false) // 响应式api
 const loading = ref(false);
@@ -44,42 +55,34 @@ const loading = ref(false);
 // 定义 formRef（校验规则）
 type FormInstance = InstanceType<typeof ElForm>;
 const loginFormRef = ref<FormInstance>();
+const loginRules = reactive({
+  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  password: [{ required: true, message: "请输入密码", trigger: "blur" }]
+});
 
 const loginForm = reactive<Login.ReqLoginForm>({ username: "", password: "" });
 
-const login = (formEl: FormInstance | undefined) =>{
-  console.log(formEl,'formEl')
+const login = (formEl: FormInstance | undefined) => {
+  // console.log(formEl, 'formEl')
   // 没有内容直接停止
-  try {
-      console.log(121312312)
-      // 1.执行登录接口 这个是不是可以去store中去做
-      const data= loginApi({ ...loginForm, password: md5(loginForm.password) });
-      console.log(data,'data')
-			// const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
-
-    }finally{
-       loading.value = true;
-  }
   if (!formEl) return;
   formEl.validate(async valid => {
-    console.log('werer')
+    // console.log('werer')
     if (!valid) return;
     // 打开加载效果
     loading.value = true;
     try {
-      console.log(121312312)
-      // 1.执行登录接口 这个是不是可以去store中去做
-      const data= await loginApi({ ...loginForm, password: md5(loginForm.password) });
-      console.log(data,'data')
-			// const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
+      // 1.执行登录接口 有些数据需要存在store中
+      const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
+      // console.log(data,'data')
+      // 2.缓存token，并且用token获取用户信息
+      globalStore.setToken(data.access_token);
 
-    }finally{
-       loading.value = true;
+    } finally {
+      loading.value = true;
     }
   })
 }
 
-
 </script>
-
 <style lang='scss' src='./login.scss' scoped />

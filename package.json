@@ -20,6 +20,7 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@types/js-md5": "^0.4.3",
     "@types/node": "^18.11.10",
     "@types/qs": "^6.9.7",
     "@types/three": "^0.146.0",

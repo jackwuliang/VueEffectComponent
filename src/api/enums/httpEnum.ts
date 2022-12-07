@@ -4,9 +4,9 @@
  * @description：请求配置
  */
 export enum ResultEnum {
-	SUCCESS = 200,
+	SUCCESS = 20000,
 	ERROR = 500,
-	OVERDUE = 599,
+	OVERDUE = 599, // 信息错误
 	TIMEOUT = 10000,
 	TYPE = "success"
 }

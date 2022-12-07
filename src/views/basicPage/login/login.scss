@@ -48,30 +48,32 @@ $box-border_color:#e6e7e9;
                 }
                 .mes-title-option{
                      display: flex;
+                     flex-grow: 1;
                      flex-direction: row;
                      height: 20px;
                      margin-bottom: 8px;
                      p{
                         font-weight: 800;
                         font-size: 14px;
-                        float: right;
                         flex-grow: 1;
                         text-align: left;
+                        line-height: 20px;
 
                      }
                      .forget-password{
+                        // width: 200px;
                         color: blue;
+                        line-height: 20px;
                      }
                 }
                 .mes-input-option{
                     display: flex;
                     flex-direction: row;
-                    margin-bottom: 16px;
                 }
                 .basic_configsetting{
                     display: flex;
                     flex-direction: row;
-                    margin-top: -8px;
+                    margin-top: -12px;
                 }
                 .button_flex{
                      margin-top: 32px;
@@ -109,6 +111,10 @@ $box-border_color:#e6e7e9;
                 }
             }
         }
+    }
+    .box_item{
+        display: flex;
+        flex-direction: column;
     }
 }
 
