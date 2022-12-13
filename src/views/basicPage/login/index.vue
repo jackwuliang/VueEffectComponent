@@ -40,13 +40,15 @@
 <script setup lang="ts">
 
 import { ref, reactive } from 'vue'
+import { useRouter } from "vue-router";
 import { Login } from "@/api/interface";
-import { loginApi } from "@/api/modules/login";
+import { loginApi,getUseInfo } from "@/api/modules/login";
 import { GlobalStore } from "@/stores";
 import type { ElForm } from "element-plus";
 import { Share } from '@element-plus/icons-vue'
 import md5 from "js-md5";
 
+const router = useRouter();
 const globalStore = GlobalStore();
 
 const checked = ref(false) // 响应式api
@@ -74,9 +76,18 @@ const login = (formEl: FormInstance | undefined) => {
     try {
       // 1.执行登录接口 有些数据需要存在store中
       const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
-      // console.log(data,'data')
+      // console.log(data,'token')
       // 2.缓存token，并且用token获取用户信息
       globalStore.setToken(data.access_token);
+      // 3.更新用户信息
+      const { data:useinfomes } = await getUseInfo(data!.access_token)
+      globalStore.getUserinfo(useinfomes);
+      const { homeUrl } = useinfomes
+      console.log(useinfomes,'useinfo')
+
+      // 4跳转到用户首页
+      router.push(homeUrl)
+      // globalStore.setToken(data.access_token);
 
     } finally {
       loading.value = true;

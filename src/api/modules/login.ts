@@ -21,6 +21,13 @@ export const logoutApi = () => {
 	return http.post(`/user/logout`);
 };
 
+
+// * 获取用户信息
+export const getUseInfo = (token:any) => {
+	return http.get<Login.UesinfoList>(`/user/getuseinfo`,{token});
+};
+
+
 // * 获取按钮权限
 // export const getAuthButtonListApi = () => {
 // 	return http.get<Login.ResAuthButtons>(PORT1 + `/auth/buttons`, {}, { headers: { noLoading: true } });

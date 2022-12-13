@@ -57,6 +57,7 @@ class RequestHttp {
 		this.service.interceptors.response.use(
 			(response: AxiosResponse) => {
 				const { data } = response;
+				// console.log(data,'res')
 				const globalStore = GlobalStore();
 				// * 在请求结束后，并关闭请求 loading
 				// tryHideFullScreenLoading();

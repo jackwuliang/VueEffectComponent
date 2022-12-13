@@ -1,7 +1,10 @@
 import { defineStore, createPinia } from "pinia";
+import { GlobalState, ThemeConfigProps } from "./interface"
+import { getUseInfo } from "@/api/modules/login";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 
-type GlobalState = any
+// 跳转到哪一个页面 HomeURl
+
 
 export const GlobalStore = defineStore({
     // id: 必须的，在所有 Store 中唯一
@@ -13,34 +16,44 @@ export const GlobalStore = defineStore({
         userInfo: "",
         // element组件大小
         assemblySize: "default",
-        // language
-        language: "",
+        //
+        locationId: '',
+        //
+        homeUrl: '',
+        //
+        role: [],
+        // 
+        routers: [],
+        //
+        locationList: null,
         // themeConfig
         themeConfig: {
-            // 布局切换 ==>  纵向：vertical | 经典：classic | 横向：transverse | 分栏：columns
+            // 布局切换 ==>  纵向：vertical | 经典：horizal | 横向：transverse | 分栏：columns
             layout: "vertical",
             // 默认 primary 主题颜色
-            // primary: DEFAULT_PRIMARY,
+            primary: 'DEFAULT_PRIMARY',
             // 深色模式
             isDark: false,
-            // 灰色模式
-            isGrey: false,
-            // 色弱模式
-            isWeak: false,
-            // 折叠菜单
-            isCollapse: false,
             // 面包屑导航
-            breadcrumb: true,
+            breadcrumb: false,
             // 面包屑导航图标
             breadcrumbIcon: true,
-            // 标签页
-            tabs: true,
-            // 标签页图标
-            tabsIcon: true,
             // 页脚
             footer: true,
-            // 当前页面是否全屏
-            maximize: false
+            // 全屏按钮
+            maximize: true,
+            // 通知按钮
+            notification: true,
+            // 常用菜单
+            commonMenu: true,
+            // 数据源信息
+            locationSouce: false,
+            // 是否带有logo
+            logoPosition: false,
+            // logo选择
+            logoMess: "",
+            // 全部菜单
+            allMenu: false,
         }
     }),
     getters: {
@@ -50,8 +63,10 @@ export const GlobalStore = defineStore({
         // setToken
         setToken(token: string) {
             this.token = token;
-            // 获取对应的用户的信息或者关于配置的信息 这个留给下一个去了
         },
+        getUserinfo(data:GlobalState){
+            
+        }
     },
     // persist: piniaPersistConfig("GlobalState")
 })

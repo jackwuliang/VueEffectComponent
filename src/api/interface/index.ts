@@ -1,3 +1,5 @@
+import { GlobalState } from '@/stores/interface/index'
+
 // * 请求响应参数(不包含data)
 export interface Result {
 	code: string;
@@ -8,6 +10,9 @@ export interface Result {
 export interface ResultData<T = any> extends Result {
 	data: T;
 }
+
+
+
 
 // * 分页响应参数
 export interface ResPage<T> {
@@ -32,6 +37,7 @@ export namespace Login {
 	export interface ResLogin {
 		access_token: string;
 	}
+	export interface UesinfoList extends GlobalState{}
 	export interface ResAuthButtons {
 		[key: string]: {
 			[key: string]: boolean;
