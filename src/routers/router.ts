@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-
 /**
  * @description 动态路由参数配置简介
  * @param path ==> 菜单路径
@@ -32,7 +31,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 // });
 
 
-// 路由配置在这里 这个部分需要从后端处理过来
+// 路由配置在这里 这个部分需要从后端处理过来 暂时走的是本地的route+ 无权限 + 路由守卫
 const routes: RouteRecordRaw[] = [
 	{
 		path: "/",

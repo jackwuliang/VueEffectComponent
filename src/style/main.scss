@@ -1,6 +1,7 @@
 
 @import './util.scss//index.scss';
 @import './variable.scss';
+@import './variable/color.scss';
 
 $-primary-color:#1C2E5C;
 $-main-font-family: 'Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif';
@@ -53,4 +54,9 @@ th,
 td {
   margin: 0;
   padding: 0;
+}
+
+div{
+   overflow: hidden;
+   box-sizing: border-box;
 }
