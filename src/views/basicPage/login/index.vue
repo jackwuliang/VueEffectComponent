@@ -83,7 +83,8 @@ const login = (formEl: FormInstance | undefined) => {
       const { data:useinfomes } = await getUseInfo(data!.access_token)
       globalStore.getUserinfo(useinfomes);
       const { homeUrl } = useinfomes
-      console.log(useinfomes,'useinfo')
+      // console.log(useinfomes,'useinfo')
+      console.log(globalStore,'globalStore')
 
       // 4跳转到用户首页
       router.push(homeUrl)

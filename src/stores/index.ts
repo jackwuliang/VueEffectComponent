@@ -6,6 +6,7 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 // 跳转到哪一个页面 HomeURl
 
 
+
 export const GlobalStore = defineStore({
     // id: 必须的，在所有 Store 中唯一
     id: "GlobalState",
@@ -64,8 +65,17 @@ export const GlobalStore = defineStore({
         setToken(token: string) {
             this.token = token;
         },
-        getUserinfo(data:GlobalState){
-            
+        getUserinfo(data: GlobalState) {
+            // console.log(data, 'data')
+            // 有一部分需要存到session中去
+            const { themeConfig, locationList, role, locationId, assemblySize, userInfo,homeUrl} = data
+            this.themeConfig = themeConfig
+            this.locationList = locationList
+            this.role = role
+            this.locationId = locationId
+            this.assemblySize = assemblySize
+            this.userInfo = userInfo
+            this.homeUrl = homeUrl
         }
     },
     // persist: piniaPersistConfig("GlobalState")

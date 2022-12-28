@@ -1,0 +1,12 @@
+
+
+.Header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: blue;
+    padding: 0 12px;
+    .logo{
+        flex-grow: 1;
+    }
+}

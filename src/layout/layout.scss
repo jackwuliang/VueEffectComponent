@@ -1,8 +1,46 @@
 
+
+// pc响应式布局的最小的点
+$max-width:1320px;
+// 这个位置可以通过@media来做一下动态区分
+$back-title-color:white;
+// content
+$back-content-color:rgb(241,245,249);
+
+%Horizal-layout {
+    max-width: $max-width;
+    display: flex;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// 主体结构背景；
+
 .app-page{
-    background-color: greenyellow; // 后面需要改一下；
+    background-color: transparent;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    &-Header{
+        height: 56px;
+        display: flex;
+        flex-direction: row;
+        background-color: $back-title-color;
+        > div{ // 作用到第一层
+            @extend %Horizal-layout;
+        }
+    }
+    &-Menu{
+        background-color: $back-title-color;
+        @extend %Horizal-layout;
+    }
+    &-content{
+        flex-grow: 1;
+        background-color: $back-content-color;
+        > div{ // 作用到第一层
+            @extend %Horizal-layout;
+        }
+    }
 }
 

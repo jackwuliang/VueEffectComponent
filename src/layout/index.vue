@@ -1,8 +1,8 @@
 <template>
     <div class="app-page">
-        <Header></Header>
-        <Menu></Menu>
-        <router-view></router-view>
+        <div class="app-page-Header"><Header></Header></div>
+        <div class="app-page-Menu"><Menu></Menu></div>
+        <div class="app-page-content"><router-view></router-view></div>
     </div>
 </template>
 
@@ -10,6 +10,7 @@
 
 import Header from './components/header/index.vue'
 import Menu from './components/Menu/index.vue'
+
 
 </script>
 

@@ -22,7 +22,8 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 // const metaRouters = import.meta.globEager("./modules/*.ts");
 
 
-// * 处理路由表
+// * 处理路由表 路径需要区分大小写 不然不触发热更新
+
 // export const routerArray: RouteRecordRaw[] = [];
 // Object.keys(metaRouters).forEach(item => {
 // 	Object.keys(metaRouters[item]).forEach((key: any) => {
@@ -57,12 +58,12 @@ const routes: RouteRecordRaw[] = [
 		children:[
 			{
 				path: 'dashboard',
-				component: () => import('@/views/componentpage/dashboard/index.vue'),
+				component: () => import('@/views/componentPage/dashboard/index.vue'),
 				name: 'Dashboard',
 			},
 			{
 				path: 'test',
-				component: () => import('@/views/componentpage/test/index.vue'),
+				component: () => import('@/views/componentPage/test/index.vue'),
 				name: 'test',
 			}
 		]
