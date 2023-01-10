@@ -9,6 +9,17 @@
         flex-grow: 1;
         display: flex;
         flex-direction: row-reverse;
+        align-items: center;
+
+        .funcIcon{
+            margin-left: 6px;
+            margin-right: 6px;
+            svg{
+                height: 18px;
+                width: 18px;
+            }
+
+        }
 
         // 数据选择
         .dataLoc {
@@ -23,6 +34,16 @@
         // 信息通知
         .notification {
             background-color: transparent;
+            height: 18px;
+            width: 18px;
+            
+            &:hover{
+                color: #1C2E5C;
+                transform: scale(1.03,1.03);
+                svg{
+                }
+            }
+            
         }
 
         // 头像区域
@@ -30,12 +51,12 @@
             background-color: transparent;
             display: flex;
             flex-direction: row;
-            margin-left: 12px;
+            margin-left: 6px;
             .icon{
                 height: 32px;
                 width: 32px;
-                background-color: blue;
-                border-radius: 2px;
+                background-color: #1C2E5C;
+                border-radius: 4px;
                 color: white;
                 align-items: center;
                 justify-content: center;

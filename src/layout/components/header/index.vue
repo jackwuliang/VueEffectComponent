@@ -3,8 +3,8 @@
         <Logo></Logo>
         <div class="space-content">
             <Avatar></Avatar>
-            <Maximize></Maximize>
             <Notify></Notify>
+            <Maximize></Maximize>
             <dataLoc></dataLoc>
         </div>
     </div>
@@ -19,4 +19,3 @@ import Notify from '../Notify/index.vue'
 
 </script>
 <style lang='scss' src='./header.scss'/>
-

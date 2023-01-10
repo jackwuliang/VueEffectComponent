@@ -1,6 +1,6 @@
 <template>
-    <div class="dataLoc">
-        0000
+    <div class="notification funcIcon">
+         图标 + icon
     </div>
 </template>
 
