@@ -1,0 +1,9 @@
+$logo-back-width:200px; // logo区域的宽度
+.logo-content{
+    width: $logo-back-width;
+    background-color: transparent;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

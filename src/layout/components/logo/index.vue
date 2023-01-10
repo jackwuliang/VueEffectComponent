@@ -1,13 +1,19 @@
 <template >
-    <div v-if="!logoPosition">logo 位置</div>
+    <div v-if="logoPosition" class="logo-content">
+        <div>{{logoMess}}</div>
+    </div>
 </template>
 
 <script setup lang="ts">
+import { sessionGet} from '@/utils/auth'
+import { THEMECONFIG } from '@/utils/typename'
+const { logoPosition, logoMess } = sessionGet(THEMECONFIG)
 
-import { GlobalStore } from "@/stores";
-
-const globalStore = GlobalStore()
-console.log(globalStore.themeConfig, 'themconfig')
-const { logoPosition, logoMess } = globalStore.themeConfig
+// console.log(sessionGet(THEMECONFIG), 'sessionGet(THEMECONFIG)')
+// console.log(logoMess,'logoMess')
 
 </script>
+
+
+<style lang='scss' src='./logo.scss' scoped />
+

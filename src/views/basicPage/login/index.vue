@@ -46,6 +46,8 @@ import { loginApi,getUseInfo } from "@/api/modules/login";
 import { GlobalStore } from "@/stores";
 import type { ElForm } from "element-plus";
 import { Share } from '@element-plus/icons-vue'
+import { sessionSet } from '@/utils/auth'
+import { THEMECONFIG } from '@/utils/typename'
 import md5 from "js-md5";
 
 const router = useRouter();
@@ -81,10 +83,14 @@ const login = (formEl: FormInstance | undefined) => {
       globalStore.setToken(data.access_token);
       // 3.更新用户信息
       const { data:useinfomes } = await getUseInfo(data!.access_token)
+      // 缓存session
+      const { themeConfig } = useinfomes
+      sessionSet(THEMECONFIG,themeConfig)
+
       globalStore.getUserinfo(useinfomes);
       const { homeUrl } = useinfomes
       // console.log(useinfomes,'useinfo')
-      console.log(globalStore,'globalStore')
+      // console.log(globalStore,'globalStore')
 
       // 4跳转到用户首页
       router.push(homeUrl)

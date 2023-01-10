@@ -4,6 +4,8 @@
 $max-width:1320px;
 // 这个位置可以通过@media来做一下动态区分
 $back-title-color:white;
+// 菜单头部高度
+$header-height:56px;
 // content
 $back-content-color:rgb(241,245,249);
 
@@ -23,10 +25,11 @@ $back-content-color:rgb(241,245,249);
     display: flex;
     flex-direction: column;
     &-Header{
-        height: 56px;
+        height: $header-height;
         display: flex;
         flex-direction: row;
         background-color: $back-title-color;
+        border-bottom:  1px solid $back-content-color;
         > div{ // 作用到第一层
             @extend %Horizal-layout;
         }
