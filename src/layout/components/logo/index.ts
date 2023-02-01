@@ -8,15 +8,17 @@ export default class ThreeJs {
     camera: THREE.PerspectiveCamera | null = null; // 摄像头
     renderer: THREE.WebGLRenderer | null = null; // 渲染器
     ambientLight: THREE.AmbientLight | null = null; // 灯光
-    mesh: Array<any> | false = []; // 模型
+    mesh: any = {}; // 模型
 
-    HEIGHT: number = 500;
-    WIDTH: number = 500;
+    HEIGHT: number = 36;
+    WIDTH: number = 200;
+
 
     constructor() {
         this.init();
     }
 
+    // 初始化进程 
     init(): void {
         // 第一步新建一个场景
         this.scene = new THREE.Scene();
@@ -38,13 +40,12 @@ export default class ThreeJs {
             0.1,
             1000
         );
-        this.camera.position.z = 900;
-        this.camera.position.x = -100;
-        this.camera.position.y = 100;
-        this.camera.rotation.x = 0.3
-        this.camera.rotation.y = -0.1
-        this.camera.rotation.z = 0.2
-
+        this.camera.position.z = 3;
+        this.camera.position.x = 2;
+        this.camera.position.y = 2;
+        // this.camera.rotation.x = 0.3
+        // this.camera.rotation.y = -0.1
+        // this.camera.rotation.z = 0.2
         // console.log(this.camera,'camera')
     }
 
@@ -59,6 +60,8 @@ export default class ThreeJs {
         // 重要渲染引擎
         this.renderer.outputEncoding = sRGBEncoding
         this.renderer.shadowMap.enabled = true;
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.toneMappingExposure = 1;
         // this.renderer.shadowMapSoft = true;
         this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
         //这里 其实就是canvas 画布  renderer.domElement
@@ -69,7 +72,7 @@ export default class ThreeJs {
     setLight(): void {
         if (this.scene) {
             console.log('223232423423')
-            this.ambientLight = new THREE.AmbientLight(0xFD2424); // 环境光
+            this.ambientLight = new THREE.AmbientLight(0xffffff); // 环境光
             this.scene.add(this.ambientLight);
             const hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, .9);
             this.scene.add(hemisphereLight);
@@ -79,29 +82,44 @@ export default class ThreeJs {
     // 创建网格模型
     setCube(): void {
         if (this.scene) {
-            const geometry = new THREE.BoxGeometry(); //创建一个立方体几何对象Geometry
+            const geometry = new THREE.BoxGeometry(2, 2, 2); //创建一个立方体几何对象Geometry
             // const material = new THREE.MeshBasicMaterial({ color: 0xff3200 }); //材质对象Material
             // const texture = new THREE.TextureLoader()
             const material = new THREE.MeshBasicMaterial({ color: 0x1C2E5C }); //然后创建一个phong材质来处理着色，并传递给纹理映射
             // this.mesh.add(new THREE.Mesh(geometry, material)); //网格模型对象Mesh
+            this.mesh = new THREE.Mesh(geometry, material)
+            // this.mesh.center()
+            this.mesh.position.z = 1;
+            console.log(this.mesh,'mesh')
 
             // 直接通过导入
-            const loaderpath = ["../models/AI/AI.fbx"]
-            THREELOADER(loaderpath).then((res:any) => {
-                console.log('3d', res[0])
-                // console.log('obj3D', this.modelImportArr(res))
-                // this.mesh = this.modelImportArr(res)
-                // this.modelImportArr(res).forEach((ittemMesh) => this.scene?.add(ittemMesh))
-                this.scene?.add(res[0])
-                const mixer = new THREE.AnimationMixer( res[0] );
-				mixer.clipAction( res[0].animations[0] ).setDuration( 1 ).play();
-                // mesh.center()
-                if (!this.mesh) {
-                    alert("模型有问题；去找找看吧")
-                }
-            });
+            
+            // const loaderpath = ["../models/AI/AI.fbx"]
+            // THREELOADER(loaderpath).then((res:any) => {
+            //     console.log('3d', res[0])
+            //     // const mesh = res[0]
+            //     // console.log('obj3D', this.modelImportArr(res))
+            //     // this.mesh = this.modelImportArr(res)
+            //     // this.modelImportArr(res).forEach((ittemMesh) => this.scene?.add(ittemMesh))
+            //     this.mesh = res[0]
+            //     this.scene?.add(this.mesh)
+            //     // const mixer = new THREE.AnimationMixer( mesh );
+            //     // console.log(mixer,'mixer')  // 动画基本节点
 
-            // this.scene.add(this.mesh); //网格模型添加到场景中
+            //     // const clip = THREE.AnimationClip.findByName( res[0].animations, 'CINEMA_4D___' );
+            //     // console.log(clip,'clip')
+
+			// 	// mixer.clipAction( mesh.animations[0] ).play();
+            //     // mesh.center()
+
+            //     if (!this.mesh) {
+            //         alert("模型有问题；去找找看吧")
+            //         // 这个地方需要 有一个输出的文件 
+            //     }
+
+            // });
+
+            this.scene.add(this.mesh); //网格模型添加到场景中
             this.render();
         }
     }
@@ -124,7 +142,7 @@ export default class ThreeJs {
     // 渲染
     render(): void {
         if (this.renderer && this.scene && this.camera) {
-            // const controls = new OrbitControls( this.camera, this.renderer.domElement );
+            const controls = new OrbitControls( this.camera, this.renderer.domElement );
             // controls.minDistance = 30;
             // 最大视角距离
             // controls.maxDistance = 300;
@@ -136,8 +154,8 @@ export default class ThreeJs {
     animate(): void {
         if (this.mesh) {
             requestAnimationFrame(this.animate.bind(this));
-            // this.mesh.rotation.x += 0.01;
-            // this.mesh.rotation.y += 0.01;
+            this.mesh.rotation.x += 0.01;
+            this.mesh.rotation.y += 0.01;
             this.render();
         }
     }

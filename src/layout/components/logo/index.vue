@@ -1,7 +1,7 @@
 <template >
     <div v-if="logoPosition" class="logo-content">
         <div ref="aiLogo" class="ailogo">
-            {{logoMess}}
+            <!-- {{logoMess}} -->
         </div>
     </div>
 </template>
@@ -12,8 +12,10 @@ import { THEMECONFIG } from '@/utils/typename'
 import ThreeJs from "./index";
 import { onMounted, ref } from "vue";
 
+
 // 获取对应的后端传过来的基础信息
 const { logoPosition, logoMess } = sessionGet(THEMECONFIG)
+
 
 // 相应式 ref 直接通过同名的形式来获取 
 const aiLogo = ref<HTMLElement | null>(null);
